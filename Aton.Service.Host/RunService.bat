@@ -1,0 +1,1 @@
+AtonServiceHost.exe -r
