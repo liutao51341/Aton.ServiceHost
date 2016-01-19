@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace Aton.Services.Host
+namespace Aton.ServicesHost
 {
     /// <summary>
     /// installer 

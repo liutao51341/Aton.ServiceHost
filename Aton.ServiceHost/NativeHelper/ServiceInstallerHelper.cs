@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Threading;
 
-namespace Aton.Services.Host
+namespace Aton.ServicesHost
 {
     /// <summary>
     /// 服务安装类

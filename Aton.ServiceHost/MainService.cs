@@ -42,7 +42,7 @@ namespace Aton.ServiceHost
             }
             else
             {
-                NativeHelper.FileTracerHelper.Trace("启动承载服务未完成失败");
+                NativeHelper.FileTracerHelper.Trace("Start host service fail");
                
             }
         }

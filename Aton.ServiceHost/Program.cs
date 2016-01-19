@@ -9,7 +9,7 @@ using Aton.Services.Host;
 using Aton.ServiceHost.ServiceConfigHandler;
 using System.Threading;
 using System.Windows.Forms;
-
+using Aton.ServicesHost;
 
 namespace Aton.ServiceHost
 {
@@ -49,37 +49,37 @@ namespace Aton.ServiceHost
                     bool r = helper.InstallService(_exePath, configHandler.ServiceSummary.ServiceName, configHandler.ServiceSummary.ServiceName, configHandler.ServiceSummary.ServiceDesc, NativeInstaller.ServiceStartType.SERVICE_AUTO_START);
                     Console.WriteLine("Service Name :" + configHandler.ServiceSummary.ServiceName);
                     Console.WriteLine("Service Desc :" + configHandler.ServiceSummary.ServiceDesc);
-                    Console.WriteLine("Install Result :" + (r ? "成功" : "失败"));
+                    Console.WriteLine("Install Result :" + (r ? "Success" : "Fail"));
                     return;
                 }
                 else if (args[0].Equals("-u", StringComparison.OrdinalIgnoreCase))
                 {
                     bool r = helper.UnInstallService(configHandler.ServiceSummary.ServiceName);
-                    Console.WriteLine("服务名称 :" + configHandler.ServiceSummary.ServiceName);
-                    Console.WriteLine("服务描述 :" + configHandler.ServiceSummary.ServiceDesc);
-                    Console.WriteLine("卸载结果 :" + (r ? "成功" : "失败"));
+                    Console.WriteLine("Service Name :" + configHandler.ServiceSummary.ServiceName);
+                    Console.WriteLine("Service Desc :" + configHandler.ServiceSummary.ServiceDesc);
+                    Console.WriteLine("Uninstall :" + (r ? "Success" : "Fail"));
                     return;
                 }
                 else if (args[0].Equals("-r", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("服务名称 :" + configHandler.ServiceSummary.ServiceName);
-                    Console.WriteLine("服务描述 :" + configHandler.ServiceSummary.ServiceDesc);
+                    Console.WriteLine("Service Name :" + configHandler.ServiceSummary.ServiceName);
+                    Console.WriteLine("Service Desc :" + configHandler.ServiceSummary.ServiceDesc);
                     bool r = helper.StartService(configHandler.ServiceSummary.ServiceName);
-                    Console.WriteLine("启动服务 :" + (r ? "成功" : "失败"));
+                    Console.WriteLine("Start :" + (r ? "Success" : "Fail"));
                 }
                 else if (args[0].Equals("-s", StringComparison.OrdinalIgnoreCase))
                 {
                     bool r = helper.StopService(configHandler.ServiceSummary.ServiceName);
-                    Console.WriteLine("服务名称 :" + configHandler.ServiceSummary.ServiceName);
-                    Console.WriteLine("服务描述 :" + configHandler.ServiceSummary.ServiceDesc);
-                    Console.WriteLine("停止服务 :" + (r ? "成功" : "失败"));
+                    Console.WriteLine("Service Name :" + configHandler.ServiceSummary.ServiceName);
+                    Console.WriteLine("Service Desc :" + configHandler.ServiceSummary.ServiceDesc);
+                    Console.WriteLine("Stop :" + (r ? "Success" : "Fail"));
                 }
                 else if (args[0].Equals("-l", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine(string.Format("托管服务列表： {0} \n", configHandler.Count));
+                    Console.WriteLine(string.Format("Host Service List： {0} \n", configHandler.Count));
                     foreach (var item in configHandler)
                     {
-                        Console.WriteLine(string.Format("服务名称: {0} \n服务全称：{1}", item.Name, item.Type.Split(',')[0]));
+                        Console.WriteLine(string.Format("Service Name: {0} \nFullName：{1}", item.Name, item.Type.Split(',')[0]));
                         Console.WriteLine("");
                     }
                     return;
@@ -90,25 +90,25 @@ namespace Aton.ServiceHost
                     switch (r)
                     {
                         case NativeInstaller.ServiceState.SERVICE_STOPPED:
-                            Console.WriteLine("服务状态: 停止");
+                            Console.WriteLine("Service State: Stopped");
                             break;
                         case NativeInstaller.ServiceState.SERVICE_START_PENDING:
-                            Console.WriteLine("服务状态: 等待启动");
+                            Console.WriteLine("Service State: Wait Start");
                             break;
                         case NativeInstaller.ServiceState.SERVICE_STOP_PENDING:
-                            Console.WriteLine("服务状态: 等待停止");
+                            Console.WriteLine("Service State: Wait Stop");
                             break;
                         case NativeInstaller.ServiceState.SERVICE_RUNNING:
-                            Console.WriteLine("服务状态: 运行");
+                            Console.WriteLine("Service State: Running");
                             break;
                         case NativeInstaller.ServiceState.SERVICE_CONTINUE_PENDING:
-                            Console.WriteLine("服务状态: 等待继续");
+                            Console.WriteLine("Service State: Wait Continue");
                             break;
                         case NativeInstaller.ServiceState.SERVICE_PAUSE_PENDING:
-                            Console.WriteLine("服务状态: 等待暂停");
+                            Console.WriteLine("Service State: Wait Pause");
                             break;
                         case NativeInstaller.ServiceState.SERVICE_PAUSED:
-                            Console.WriteLine("服务状态: 暂停");
+                            Console.WriteLine("Service State: Pause");
                             break;
                     }
                 }
@@ -132,7 +132,6 @@ namespace Aton.ServiceHost
             }
             else
             {
-                //Console.WriteLine("Error:请输入相应参数启动服务！");
                  RunAsService();
             }
         }

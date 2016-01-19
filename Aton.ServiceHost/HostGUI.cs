@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Aton.Services.Host;
+using Aton.ServicesHost;
 using Aton.ServiceHost.ServiceConfigHandler;
 using System.Reflection;
 
